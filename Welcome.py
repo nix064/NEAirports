@@ -105,9 +105,7 @@ st.set_page_config (
 # Store the DataFrame in session state  https://docs.streamlit.io/develop/concepts/multipage-apps/widgets
 
 
-# stores df in session state
-if 'dfmain' not in st.session_state:
-    st.session_state.dfmain = dfmain
+
 
 # adapted from streamlit docs + streamlit docs integrated ai (view notes)
 st.write("Nic Saliou CS230-6 Final Project")
