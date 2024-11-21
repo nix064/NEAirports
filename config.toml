@@ -1,0 +1,5 @@
+[runner]
+magicEnabled = false
+
+# From streamlit https://docs.streamlit.io/develop/api-reference/write-magic/magic
+# this allows me to use docstrings without them getting auto printed

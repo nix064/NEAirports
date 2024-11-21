@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.0.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "latitude": 43.084453234451004,
+    "longitude": -71.29385028076913,
+    "pitch": 20,
+    "zoom": 5
+  },
+  "layers": [
+    {
+      "@@type": "IconLayer",
+      "data": [
+        {
+          "elevation_ft": 418.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.223301,
+          "length_ft": 2475.0,
+          "longitude": -72.311401,
+          "municipality": "Palmer",
+          "name": "Metropolitan Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 180.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.049801,
+          "length_ft": 40.0,
+          "longitude": -72.6493,
+          "municipality": "Agawam",
+          "name": "Vergnani Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 60.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.112461,
+          "length_ft": 100.0,
+          "longitude": -73.38762,
+          "municipality": "Norwalk",
+          "name": "Norden Systems Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 17.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.342318,
+          "length_ft": 25.0,
+          "longitude": -72.093025,
+          "municipality": "New London",
+          "name": "Global Development Facility Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 17.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.342318,
+          "length_ft": 25.0,
+          "longitude": -72.093025,
+          "municipality": "New London",
+          "name": "Global Development Facility Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 700.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 44.028099,
+          "length_ft": 400.0,
+          "longitude": -72.010803,
+          "municipality": "Haverhill",
+          "name": "Brookside Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 10.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.452141,
+          "length_ft": 100.0,
+          "longitude": -70.965432,
+          "municipality": "Lynn",
+          "name": "Gear Plant Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 50.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.042684,
+          "length_ft": 50.0,
+          "longitude": -73.530836,
+          "municipality": "Stamford",
+          "name": "Canal Street Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 60.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.512964,
+          "length_ft": 1150.0,
+          "longitude": -71.029315,
+          "municipality": "Westport",
+          "name": "Allen's Pond Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 60.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.512964,
+          "length_ft": 1550.0,
+          "longitude": -71.029315,
+          "municipality": "Westport",
+          "name": "Allen's Pond Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 400.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.527,
+          "length_ft": 1700.0,
+          "longitude": -71.664497,
+          "municipality": "Shirley",
+          "name": "Shirley Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 285.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.343201,
+          "length_ft": 1659.0,
+          "longitude": -71.509002,
+          "municipality": "Marlboro",
+          "name": "Marlboro Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 705.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.039002,
+          "length_ft": 1800.0,
+          "longitude": -73.287103,
+          "municipality": "North Canaan",
+          "name": "Grass Land Air Field",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 485.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.50922,
+          "length_ft": 1900.0,
+          "longitude": -72.244334,
+          "municipality": "Colchester",
+          "name": "Gardner Lake Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 333.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.507831,
+          "length_ft": 50.0,
+          "longitude": -72.770417,
+          "municipality": "Meriden",
+          "name": "C N Flagg Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 515.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.965099,
+          "length_ft": 2600.0,
+          "longitude": -72.332901,
+          "municipality": "Stafford Springs",
+          "name": "Swift Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 12.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.338468,
+          "length_ft": 60.0,
+          "longitude": -72.868692,
+          "municipality": "North Haven",
+          "name": "USSC/North Haven Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 143.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.099472,
+          "length_ft": 40.0,
+          "longitude": -73.419483,
+          "municipality": "Norwalk",
+          "name": "50 Washington Street Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 40.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.565899,
+          "length_ft": 100.0,
+          "longitude": -72.641502,
+          "municipality": "Portland",
+          "name": "Portland Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 325.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.469501,
+          "length_ft": 100.0,
+          "longitude": -72.741997,
+          "municipality": "Wallingford",
+          "name": "Reed's Gap Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 30.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.7517,
+          "length_ft": 110.0,
+          "longitude": -72.6253,
+          "municipality": "East Hartford",
+          "name": "Rentschler Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 165.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.152318,
+          "length_ft": 37.0,
+          "longitude": -73.427343,
+          "municipality": "Norwalk",
+          "name": "USSC Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 190.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.75555,
+          "length_ft": 1600.0,
+          "longitude": -71.10907,
+          "municipality": "Fall River",
+          "name": "Fall River Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 190.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.75555,
+          "length_ft": 3948.0,
+          "longitude": -71.10907,
+          "municipality": "Fall River",
+          "name": "Fall River Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 150.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.148602,
+          "length_ft": 5000.0,
+          "longitude": -70.9394,
+          "municipality": "South Weymouth",
+          "name": "South Weymouth Naval Air Station",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 150.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.148602,
+          "length_ft": 6000.0,
+          "longitude": -70.9394,
+          "municipality": "South Weymouth",
+          "name": "South Weymouth Naval Air Station",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 150.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.148602,
+          "length_ft": 7000.0,
+          "longitude": -70.9394,
+          "municipality": "South Weymouth",
+          "name": "South Weymouth Naval Air Station",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 44.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.668999,
+          "length_ft": 1500.0,
+          "longitude": -70.417503,
+          "municipality": "Marstons Mills",
+          "name": "Marston Mills Seaplane Base",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 44.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.668999,
+          "length_ft": 3600.0,
+          "longitude": -70.417503,
+          "municipality": "Marstons Mills",
+          "name": "Marston Mills Seaplane Base",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 131.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.615398,
+          "length_ft": 100.0,
+          "longitude": -71.3209,
+          "municipality": "Lowell",
+          "name": "Avco/Lowell Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 270.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.367595,
+          "length_ft": 3000.0,
+          "longitude": -71.641701,
+          "municipality": "Berlin",
+          "name": "Berlin Lndg Area",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 66.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.367595,
+          "length_ft": 285.0,
+          "longitude": -71.071702,
+          "municipality": "Boston",
+          "name": "Museum of Science Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 80.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.045104,
+          "length_ft": 75.0,
+          "longitude": -71.009202,
+          "municipality": "Brockton",
+          "name": "Veracka Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 167.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.860401,
+          "length_ft": 60.0,
+          "longitude": -70.751701,
+          "municipality": "Carver",
+          "name": "Sampson Pond Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 270.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.218201,
+          "length_ft": 50.0,
+          "longitude": -71.297302,
+          "municipality": "Dover",
+          "name": "Oxbow Corporation Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 0.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.509801,
+          "length_ft": 5000.0,
+          "longitude": -71.038101,
+          "municipality": "Westport",
+          "name": "Horseneck Seaplane Base",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": NaN,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.427898,
+          "length_ft": 50.0,
+          "longitude": -70.984497,
+          "municipality": "Revere",
+          "name": "Rent-A-Tool Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 85.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 43.668098,
+          "length_ft": 1100.0,
+          "longitude": -70.363098,
+          "municipality": "Westbrook",
+          "name": "Super Cub Field",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 478.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 44.509201,
+          "length_ft": 1200.0,
+          "longitude": -69.952599,
+          "municipality": "Mount Vernon",
+          "name": "Mount Vernon Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 960.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 44.289002,
+          "length_ft": 1400.0,
+          "longitude": -70.446198,
+          "municipality": "Paris Hill",
+          "name": "Cummings Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 578.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 47.133901,
+          "length_ft": 3300.0,
+          "longitude": -68.334503,
+          "municipality": "Sinclair",
+          "name": "Cross Lake Seaplane Base",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 578.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 47.133901,
+          "length_ft": 11000.0,
+          "longitude": -68.334503,
+          "municipality": "Sinclair",
+          "name": "Cross Lake Seaplane Base",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 190.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 43.293716,
+          "length_ft": 2000.0,
+          "longitude": -70.901277,
+          "municipality": "Berwick",
+          "name": "Salmon Falls Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 54.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 44.216702,
+          "length_ft": 1800.0,
+          "longitude": -69.291199,
+          "municipality": "Union",
+          "name": "Clark Field",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 14.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 43.084,
+          "length_ft": 60.0,
+          "longitude": -70.761398,
+          "municipality": "Portsmouth",
+          "name": "Wharf Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 1132.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.798698,
+          "length_ft": 33.0,
+          "longitude": -71.982903,
+          "municipality": "Jaffrey",
+          "name": "Millipore Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 920.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 42.789799,
+          "length_ft": 40.0,
+          "longitude": -71.834503,
+          "municipality": "Temple",
+          "name": "Temple Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 504.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 43.638214,
+          "length_ft": 4500.0,
+          "longitude": -71.323212,
+          "municipality": "Tuftonboro",
+          "name": "Loons Nest Seaplane Base",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 504.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 43.638214,
+          "length_ft": 4500.0,
+          "longitude": -71.323212,
+          "municipality": "Tuftonboro",
+          "name": "Loons Nest Seaplane Base",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 10.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.783168,
+          "length_ft": 300.0,
+          "longitude": -71.390741,
+          "municipality": "Cranston",
+          "name": "Port Edgewood Marine Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 50.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.632,
+          "length_ft": 30.0,
+          "longitude": -71.240303,
+          "municipality": "Portsmouth",
+          "name": "Portsmouth Ramada Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 40.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.792301,
+          "length_ft": 75.0,
+          "longitude": -71.417297,
+          "municipality": "Providence",
+          "name": "H Chambers Cadillac Heliport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 310.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.733727,
+          "length_ft": 700.0,
+          "longitude": -71.528293,
+          "municipality": "Cranston",
+          "name": "Mystery Farm Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 7.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 41.821279,
+          "length_ft": 25.0,
+          "longitude": -71.405227,
+          "municipality": "Providence",
+          "name": "Downtown Providence Helistop",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 710.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 44.226447,
+          "length_ft": 1000.0,
+          "longitude": -72.795403,
+          "municipality": "Waitsfield",
+          "name": "Mad River Fly-In Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 200.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 44.105598,
+          "length_ft": 4000.0,
+          "longitude": -73.377899,
+          "municipality": "West Addison",
+          "name": "Yankee Kingdom Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        },
+        {
+          "elevation_ft": 350.0,
+          "icondata": {
+            "anchorY": 256,
+            "height": 256,
+            "url": "https://i.postimg.cc/mZNhXhkc/location.png",
+            "width": 256
+          },
+          "latitude": 44.461399,
+          "length_ft": 1100.0,
+          "longitude": -73.195999,
+          "municipality": "Burlington",
+          "name": "Fairholt Airport",
+          "scheduled_service": "no",
+          "type": "closed"
+        }
+      ],
+      "getIcon": "@@=icondata",
+      "getPosition": "@@=[longitude, latitude]",
+      "getSize": 4,
+      "id": "366cdbb6-f954-40d5-a0b8-3d3ed520d6c7",
+      "pickable": true,
+      "sizeScale": 15
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "mapbox://styles/mapbox/satellite-v9",
+  "mapboxKey": "",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = {'html': 'Airport Name:<br/> <b>{name}</b><br/>Municipality: <b>{municipality}</b><br/>Runway Length (ft): <b>{length_ft}</b><br/>Elevation (ft): <b>{elevation_ft}</b><br/>Scheduled Service: <b>{scheduled_service}</b>', 'style': {'backgroundColor': '#007acc', 'color': 'white', 'fontSize': '12px'}};
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>
