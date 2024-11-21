@@ -7,7 +7,7 @@ from Welcome import dfmain
 
 
 # https://www.youtube.com/watch?v=Bjz00ygERxY
-# This video walked through the documentation (link below, huge help with understanding)
+# This video walked through the documentation (link below, huge help with understanding + hue, poly, etc.)
 # refered to https://seaborn.pydata.org/generated/seaborn.histplot.html for help
 # working on streamlit implementation.
 st.sidebar.header("Runway Length Histogram")
@@ -19,7 +19,7 @@ dfrun = dfmain[['name', 'type', 'length_ft']]
 fig, ax = plt.subplots()
 # [viz3]
 # Create histogram for aiports only
-# its not that special but I thought this was rlly cool (the hue=type)
+# its not that special but I thought this was rlly cool (the hue=type) got help with ax=ax alignment from AI view Query1
 sns.histplot(data=dfrun, x="length_ft", binwidth=500, binrange=(100, 12000), hue='type', ax=ax)
 # includes major heliports (exculdes helipads)
 # histogram Including Heliports

@@ -13,10 +13,11 @@ st.write("Airport Elevation Histogram")
 # Get elevation data and reset index to avoid duplicate label issues
 dfelev = dfmain[['name', 'type', 'elevation_ft']].reset_index(drop=True)
 
+# for alignment used AI implementation, view Query 1. this builds on similar implementation in runways.py
 # Create figure and axis objects with elevation-specific names
 fig_elev, ax_elev = plt.subplots()
 
-# Create histogram with cleaned data [viz4]
+# Create histogram with cleaned data [viz4] # hue + element not used in class, learned from video documented in runways.py
 sns.histplot(data=dfelev, x="elevation_ft", binwidth=250, binrange=(0, 2500), hue='type', element='poly', ax=ax_elev)
 
 # Set titles and labels
