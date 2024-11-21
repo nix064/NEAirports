@@ -110,7 +110,7 @@ st.markdown(
         '<p>Source: <a href="https://www.flickr.com/photos/32693718@N07/8391470074" title="20120909 027 Boston">Flickr - Arial Photographer: David Wilson</a></p>',
         unsafe_allow_html=True)
 st.markdown(
-        '<p>This project uses <a href="https://www.flickr.com/photos/32693718@N07/8391470074"'
+        '<p>This project uses <a href="https://ourairports.com/data/"'
         ' title="20120909 027 Boston">Ourairports</a> data. Special thanks to <a href="https://github.com/davidmegginson/"'
         ' ">David Megginson</a> and all other <a href="https://ourairports.com/about.html#credits"'
         ' ">contributors</a> for providing such up to date and clean data.</p>',
