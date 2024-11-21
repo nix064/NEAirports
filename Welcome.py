@@ -17,6 +17,11 @@ View Note in submitted document with query information.
 
 import pandas as pd
 import streamlit as st
+import numpy as np
+import pydeck as pdk
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 # Defines NE state codes
 ne_states = ['US-MA', 'US-CT', 'US-RI', 'US-NH', 'US-VT', 'US-ME']
 # /Users/nicsaliou/Desktop/cs230/NEAirports
