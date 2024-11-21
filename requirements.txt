@@ -1,0 +1,9 @@
+streamlit==1.40.1
+matplotlib==3.9.2
+pydeck==0.9.1
+seaborn==0.13.2
+pandas==2.2.3
+
+# https://discuss.streamlit.io/t/modulenotfounderror-no-module-named-vega-datasets/16354/3
+# https://docs.streamlit.io/knowledge-base/dependencies/module-not-found-error
+# had this error uploading to streamlit cloud
