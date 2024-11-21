@@ -20,7 +20,7 @@ def format_state(state_code):
    return state_names[state_code]
 # [ST1]
 choice = st.sidebar.multiselect("Choose states:", states, format_func=format_state)
-
+st.sidebar.markdown("Note: you must begin with MA or RI as they are the only two states with balloonports!")
 # Create the base data first [DA2]
 dftypes = dfmain.groupby('type').size().sort_values(ascending=False)
 type_labels = dftypes.index.tolist()

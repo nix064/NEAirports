@@ -34,8 +34,8 @@ for facility_type in dfelev['type'].unique():
     if not type_data.empty:
         stats = {
             'Type': facility_type,
-            'Shortest (ft)': int(type_data['elevation_ft'].min()),
-            'Longest (ft)': int(type_data['elevation_ft'].max()),
+            'Lowest (ft)': int(type_data['elevation_ft'].min()),
+            'Highest (ft)': int(type_data['elevation_ft'].max()),
         }
         elev_stats_df = pd.concat([elev_stats_df, pd.DataFrame([stats])])
 
