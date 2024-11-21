@@ -101,12 +101,6 @@ st.set_page_config (
     page_icon="✈️" #emojipedia
 )
 
-#Map dataframe
-# Store the DataFrame in session state  https://docs.streamlit.io/develop/concepts/multipage-apps/widgets
-
-
-
-
 # adapted from streamlit docs + streamlit docs integrated ai (view notes)
 st.write("Nic Saliou CS230-6 Final Project")
 st.write("Welcome to my project on NE Airports.")

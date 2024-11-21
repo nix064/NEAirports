@@ -118,14 +118,6 @@ def icon_map(dfmap):
     st.markdown(
         '<p>Icon Credit: <a href="https://www.flaticon.com/free-icon/location_10903011?term=airport&page=1&position=17&origin=search&related_id=10903011" title="Location free icon">Created by Boris Farias - Flaticon</a></p>',
         unsafe_allow_html=True)
-#adapted from streamlit docs ai (view notes)
-
-# if 'dfmain' in st.session_state:
-   # dfmain = st.session_state.dfmain
-    # Now you can use the DataFrame
-   # st.write(dfmain)
-# else:
-   # st.write("DataFrame not found in session state")
 
 def main():
     dfmap = get_data()
