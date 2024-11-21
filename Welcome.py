@@ -19,18 +19,18 @@ import pandas as pd
 import streamlit as st
 # Defines NE state codes
 ne_states = ['US-MA', 'US-CT', 'US-RI', 'US-NH', 'US-VT', 'US-ME']
-
+# /Users/nicsaliou/Desktop/cs230/NEAirports
 # creates df from regions.csv and only takes code(US-MA), local code(ex. MA, CT), and name
-dfreg = pd.read_csv("/Users/nicsaliou/Desktop/cs230/NEAirports/regions.csv", index_col="code")
+dfreg = pd.read_csv("regions.csv", index_col="code")
 dfstates = dfreg.loc[ne_states, ['local_code', 'name']].sort_index()
 
 # Get airports in these states - id is a static number assigned to each airport
-dfairp = pd.read_csv('/Users/nicsaliou/Desktop/cs230/NEAirports/airports.csv', index_col='id')
+dfairp = pd.read_csv('airports.csv', index_col='id')
 ne_airports = dfairp[dfairp['iso_region'].isin(ne_states)]
 
 # Get runways at the applicable airports + join neairports and runways
 runway_columns = ['id', 'airport_ident', 'length_ft', 'width_ft', 'surface', 'lighted', 'closed']
-dfrun = pd.read_csv('/Users/nicsaliou/Desktop/cs230/NEAirports/runways.csv', index_col='airport_ref')
+dfrun = pd.read_csv('runways.csv', index_col='airport_ref')
 dfrunways = dfrun.loc[:, runway_columns] # all rows, only runway columns
 dfmain = ne_airports.join(dfrunways, how='inner') # join airports.csv + runways.csv
 #https://www.w3schools.com/python/pandas/ref_df_join.asp reffered to w3s for inner join,
